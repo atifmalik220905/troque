@@ -19,15 +19,14 @@ export default function PhotoGalleryPage() {
           <div className="why-choose-one__tab-box tabs-box">
             {/* Album Tabs */}
             <ul
-              className="tab-buttons"
+              className="tab-buttons gallery-tab-buttons"
               style={{
                 display: "flex",
                 justifyContent: "center",
                 gap: "15px",
                 listStyle: "none",
                 padding: 0,
-                marginBottom: "40px",
-                flexWrap: "wrap"
+                marginBottom: "40px"
               }}
             >
               {ORIGINAL_ALBUMS.map((album) => {
@@ -47,7 +46,8 @@ export default function PhotoGalleryPage() {
                       alignItems: "center",
                       gap: "10px",
                       fontWeight: 600,
-                      transition: "all 0.3s ease"
+                      transition: "all 0.3s ease",
+                      flexShrink: 0
                     }}
                   >
                     <span className="tab-btn__icon">

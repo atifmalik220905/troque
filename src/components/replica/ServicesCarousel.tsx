@@ -1,25 +1,57 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { ORIGINAL_SERVICES } from "@/data/originalData";
 
 export default function ServicesCarousel() {
   const [startIndex, setStartIndex] = useState(0);
-  const itemsPerPage = 3;
+  const [itemsPerPage, setItemsPerPage] = useState(3);
+  const touchStartX = useRef<number | null>(null);
+
+  useEffect(() => {
+    const updateItems = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerPage(1);
+      } else if (window.innerWidth < 1200) {
+        setItemsPerPage(2);
+      } else {
+        setItemsPerPage(3);
+      }
+    };
+    updateItems();
+    window.addEventListener("resize", updateItems);
+    return () => window.removeEventListener("resize", updateItems);
+  }, []);
 
   const nextSlide = () => {
-    setStartIndex((prev) => (prev + itemsPerPage >= ORIGINAL_SERVICES.length ? 0 : prev + 1));
+    setStartIndex((prev) => (prev + 1 >= ORIGINAL_SERVICES.length ? 0 : prev + 1));
   };
 
   const prevSlide = () => {
-    setStartIndex((prev) => (prev === 0 ? ORIGINAL_SERVICES.length - itemsPerPage : prev - 1));
+    setStartIndex((prev) => (prev === 0 ? ORIGINAL_SERVICES.length - 1 : prev - 1));
   };
 
-  const displayedServices = ORIGINAL_SERVICES.slice(startIndex, startIndex + itemsPerPage);
-  // Wrap around if near end
-  if (displayedServices.length < itemsPerPage) {
-    displayedServices.push(...ORIGINAL_SERVICES.slice(0, itemsPerPage - displayedServices.length));
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (diff > 50) {
+      nextSlide();
+    } else if (diff < -50) {
+      prevSlide();
+    }
+    touchStartX.current = null;
+  };
+
+  // Build slice with wrap-around
+  const displayedServices = [];
+  for (let i = 0; i < itemsPerPage; i++) {
+    const idx = (startIndex + i) % ORIGINAL_SERVICES.length;
+    displayedServices.push(ORIGINAL_SERVICES[idx]);
   }
 
   return (
@@ -60,11 +92,18 @@ export default function ServicesCarousel() {
           </div>
         </div>
 
-        {/* Services Grid with Carousel Controls */}
-        <div style={{ position: "relative" }}>
+        {/* Services Grid with Touch Swipe */}
+        <div
+          style={{ position: "relative", touchAction: "pan-y" }}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           <div className="row gutter-y-30">
             {displayedServices.map((service, idx) => (
-              <div key={`${service.id}-${idx}`} className="col-lg-4 col-md-6">
+              <div
+                key={`${service.id}-${idx}`}
+                className={itemsPerPage === 1 ? "col-12" : itemsPerPage === 2 ? "col-md-6" : "col-lg-4 col-md-6"}
+              >
                 <div className="service-card-four">
                   <div
                     className="service-card-four__bg"
@@ -114,6 +153,7 @@ export default function ServicesCarousel() {
             style={{
               display: "flex",
               justifyContent: "center",
+              alignItems: "center",
               gap: "16px",
               marginTop: "40px"
             }}
@@ -122,8 +162,8 @@ export default function ServicesCarousel() {
               onClick={prevSlide}
               aria-label="Previous Services"
               style={{
-                width: "48px",
-                height: "48px",
+                width: "44px",
+                height: "44px",
                 borderRadius: "50%",
                 border: "1px solid #90b72d",
                 backgroundColor: "#ffffff",
@@ -137,12 +177,15 @@ export default function ServicesCarousel() {
             >
               <i className="fas fa-chevron-left"></i>
             </button>
+            <span style={{ fontSize: "14px", fontWeight: 600, color: "#6b7280" }}>
+              {startIndex + 1} / {ORIGINAL_SERVICES.length}
+            </span>
             <button
               onClick={nextSlide}
               aria-label="Next Services"
               style={{
-                width: "48px",
-                height: "48px",
+                width: "44px",
+                height: "44px",
                 borderRadius: "50%",
                 border: "1px solid #90b72d",
                 backgroundColor: "#90b72d",
@@ -162,4 +205,3 @@ export default function ServicesCarousel() {
     </section>
   );
 }
-

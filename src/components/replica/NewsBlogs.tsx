@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 export default function NewsBlogs() {
@@ -56,19 +56,51 @@ export default function NewsBlogs() {
   ];
 
   const [startIndex, setStartIndex] = useState(0);
-  const itemsPerPage = 4;
+  const [itemsPerPage, setItemsPerPage] = useState(4);
+  const touchStartX = useRef<number | null>(null);
+
+  useEffect(() => {
+    const updateItems = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerPage(1);
+      } else if (window.innerWidth < 1200) {
+        setItemsPerPage(2);
+      } else {
+        setItemsPerPage(4);
+      }
+    };
+    updateItems();
+    window.addEventListener("resize", updateItems);
+    return () => window.removeEventListener("resize", updateItems);
+  }, []);
 
   const nextSlide = () => {
-    setStartIndex((prev) => (prev + itemsPerPage >= cards.length ? 0 : prev + 1));
+    setStartIndex((prev) => (prev + 1 >= cards.length ? 0 : prev + 1));
   };
 
   const prevSlide = () => {
-    setStartIndex((prev) => (prev === 0 ? cards.length - itemsPerPage : prev - 1));
+    setStartIndex((prev) => (prev === 0 ? cards.length - 1 : prev - 1));
   };
 
-  const displayed = cards.slice(startIndex, startIndex + itemsPerPage);
-  if (displayed.length < itemsPerPage) {
-    displayed.push(...cards.slice(0, itemsPerPage - displayed.length));
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (diff > 50) {
+      nextSlide();
+    } else if (diff < -50) {
+      prevSlide();
+    }
+    touchStartX.current = null;
+  };
+
+  const displayed = [];
+  for (let i = 0; i < itemsPerPage; i++) {
+    const idx = (startIndex + i) % cards.length;
+    displayed.push(cards[idx]);
   }
 
   return (
@@ -85,9 +117,17 @@ export default function NewsBlogs() {
         </div>
       </div>
       <div className="insurance-one__container container">
-        <div className="row gutter-y-30">
+        <div
+          className="row gutter-y-30"
+          style={{ touchAction: "pan-y" }}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           {displayed.map((c, idx) => (
-            <div key={`${c.title}-${idx}`} className="col-xl-3 col-lg-6 col-md-6">
+            <div
+              key={`${c.title}-${idx}`}
+              className={itemsPerPage === 1 ? "col-12" : itemsPerPage === 2 ? "col-md-6" : "col-xl-3 col-lg-6 col-md-6"}
+            >
               <div className="insurance-card">
                 <div className="insurance-card__image">
                   <img src={`/assets/images/materials/${c.img}`} alt={c.title} />
@@ -113,6 +153,7 @@ export default function NewsBlogs() {
           style={{
             display: "flex",
             justifyContent: "center",
+            alignItems: "center",
             gap: "16px",
             marginTop: "40px"
           }}
@@ -121,8 +162,8 @@ export default function NewsBlogs() {
             onClick={prevSlide}
             aria-label="Previous Blogs"
             style={{
-              width: "48px",
-              height: "48px",
+              width: "44px",
+              height: "44px",
               borderRadius: "50%",
               border: "1px solid #90b72d",
               backgroundColor: "#ffffff",
@@ -135,12 +176,15 @@ export default function NewsBlogs() {
           >
             <i className="fas fa-chevron-left"></i>
           </button>
+          <span style={{ fontSize: "14px", fontWeight: 600, color: "#6b7280" }}>
+            {startIndex + 1} / {cards.length}
+          </span>
           <button
             onClick={nextSlide}
             aria-label="Next Blogs"
             style={{
-              width: "48px",
-              height: "48px",
+              width: "44px",
+              height: "44px",
               borderRadius: "50%",
               border: "1px solid #90b72d",
               backgroundColor: "#90b72d",
@@ -166,4 +210,3 @@ export default function NewsBlogs() {
     </section>
   );
 }
-

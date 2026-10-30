@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { ORIGINAL_SLIDERS } from "@/data/originalData";
 
 export default function MainSlider() {
   const [activeIdx, setActiveIdx] = useState(0);
+  const touchStartX = useRef<number | null>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -13,6 +14,21 @@ export default function MainSlider() {
     }, 5000);
     return () => clearInterval(timer);
   }, []);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (diff > 50) {
+      setActiveIdx((prev) => (prev + 1) % ORIGINAL_SLIDERS.length);
+    } else if (diff < -50) {
+      setActiveIdx((prev) => (prev === 0 ? ORIGINAL_SLIDERS.length - 1 : prev - 1));
+    }
+    touchStartX.current = null;
+  };
 
   const slideContent = [
     {
@@ -33,7 +49,13 @@ export default function MainSlider() {
   ];
 
   return (
-    <section className="main-slider-four" id="home" style={{ position: "relative", overflow: "hidden" }}>
+    <section
+      className="main-slider-four"
+      id="home"
+      style={{ position: "relative", overflow: "hidden", touchAction: "pan-y" }}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       <div className="main-slider-four__carousel" style={{ position: "relative" }}>
         {ORIGINAL_SLIDERS.map((slider, idx) => {
           const content = slideContent[idx] || slideContent[0];
@@ -146,4 +168,3 @@ export default function MainSlider() {
     </section>
   );
 }
-

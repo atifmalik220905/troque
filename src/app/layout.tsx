@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Header from "@/components/replica/Header";
 import Footer from "@/components/replica/Footer";
+import MobileActionBar from "@/components/replica/MobileActionBar";
 
 export const viewport: Viewport = {
   themeColor: "#c4333b",
@@ -94,6 +95,7 @@ export default function RootLayout({
           <Header />
           <main>{children}</main>
           <Footer />
+          <MobileActionBar />
         </div>
       </body>
     </html>

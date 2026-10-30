@@ -47,8 +47,8 @@ export default async function ServiceDetailPage({ params }: Props) {
       <section className="service-details section-space-top section-space-bottom2">
         <div className="container">
           <div className="row gutter-y-40">
-            {/* Left Sidebar */}
-            <div className="col-xl-4 col-lg-5">
+            {/* Sidebar (Desktop Left, Mobile Bottom) */}
+            <div className="col-xl-4 col-lg-5 order-2 order-lg-1">
               <div className="insurance-sidebar">
                 <div className="insurance-sidebar__single">
                   <h3 className="insurance-sidebar__title">Our Services</h3>
@@ -71,8 +71,8 @@ export default async function ServiceDetailPage({ params }: Props) {
               </div>
             </div>
 
-            {/* Right Thumbnail */}
-            <div className="col-xl-8 col-lg-7">
+            {/* Thumbnail and Details (Desktop Right, Mobile Top) */}
+            <div className="col-xl-8 col-lg-7 order-1 order-lg-2">
               <div className="service-details__thumbnail">
                 <img
                   src={`/img/service_image/750x750${service.image}`}
@@ -81,15 +81,15 @@ export default async function ServiceDetailPage({ params }: Props) {
                   style={{ width: "100%", borderRadius: "10px" }}
                 />
               </div>
+
+              {/* Service Details & Key Points HTML */}
+              <div
+                className="service-details__content"
+                style={{ marginTop: "35px" }}
+                dangerouslySetInnerHTML={{ __html: service.description }}
+              />
             </div>
           </div>
-
-          {/* Service Details & Key Points HTML */}
-          <div
-            className="service-details__content"
-            style={{ marginTop: "40px" }}
-            dangerouslySetInnerHTML={{ __html: service.description }}
-          />
         </div>
       </section>
     </>

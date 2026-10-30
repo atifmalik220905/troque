@@ -2,13 +2,14 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 100px;
+  scroll-padding-top: 80px;
 }
 
 body {
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 /* Ensure smooth text scrolling animation for Marquee */
@@ -66,4 +67,205 @@ body {
   color: #fff;
   font-size: 28px;
   cursor: pointer;
+}
+
+/* =========================================================
+   Mobile View Enhancements (< 768px and < 992px)
+   ========================================================= */
+
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 65px; /* Spacing for bottom action bar */
+  }
+
+  /* Compact Marquee on phones */
+  .slide-one--home-4 {
+    padding: 24px 0 !important;
+  }
+
+  .slide-one__text {
+    font-size: 24px !important;
+  }
+
+  /* Prevent iOS zoom on inputs by ensuring min 16px font-size */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="phone"],
+  textarea {
+    font-size: 16px !important;
+  }
+
+  /* Main slider mobile title scale */
+  .main-slider-four__title {
+    font-size: 32px !important;
+    line-height: 1.25 !important;
+  }
+
+  .main-slider-four__text {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 24px !important;
+  }
+
+  .main-slider-four__button {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  .main-slider-four__button__inner {
+    width: 100% !important;
+  }
+
+  .main-slider-four__btn-1,
+  .main-slider-four__btn-2 {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* Section Titles on phones */
+  .sec-title__title {
+    font-size: 28px !important;
+    line-height: 1.28 !important;
+  }
+
+  /* Hide excessive slider background decorative overlay shapes on small phones */
+  .main-slider-four__shape-two,
+  .main-slider-four__shape-three,
+  .main-slider-four__shape-four {
+    display: none !important;
+  }
+
+  /* About section mobile image fit */
+  .about-four__image {
+    max-width: 100% !important;
+    margin-bottom: 30px !important;
+  }
+
+  .about-four__image__inner {
+    max-width: 100% !important;
+  }
+
+  /* Contact page full-width call box */
+  .contact__call {
+    width: 100% !important;
+    padding: 20px !important;
+    border-radius: 8px !important;
+  }
+
+  .contact__call__number {
+    font-size: 18px !important;
+  }
+
+  /* Page header title */
+  .page-header__title {
+    font-size: 30px !important;
+  }
+
+  .page-header {
+    padding: 60px 0 !important;
+  }
+
+  /* Footer copyright text centered */
+  .main-footer__copyright {
+    text-align: center !important;
+  }
+
+  /* Photo Gallery horizontal touch-scroll tabs */
+  .gallery-tab-buttons {
+    justify-content: flex-start !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px !important;
+    scrollbar-width: none !important; /* Firefox */
+  }
+
+  .gallery-tab-buttons::-webkit-scrollbar {
+    display: none !important; /* Chrome / Safari */
+  }
+
+  /* Lightbox close button within easy reach on phones */
+  .gallery-modal-close {
+    top: 10px !important;
+    right: 10px !important;
+    background: rgba(0, 0, 0, 0.6) !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 20px !important;
+    line-height: 1 !important;
+  }
+}
+
+/* =========================================================
+   Mobile Bottom Floating Action Bar
+   ========================================================= */
+.mobile-action-bar {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .mobile-action-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.08);
+    z-index: 9999;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 8px;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .mobile-action-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    height: 100%;
+    color: #4b5563;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+
+  .mobile-action-icon {
+    font-size: 18px;
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-action-call {
+    color: #c4333b;
+  }
+
+  .mobile-action-call .mobile-action-icon {
+    color: #c4333b;
+  }
+
+  .mobile-action-wa {
+    color: #25d366;
+  }
+
+  .mobile-action-wa .mobile-action-icon {
+    color: #25d366;
+  }
+
+  .mobile-action-item:hover,
+  .mobile-action-item:active {
+    color: #90b72d;
+  }
 }
