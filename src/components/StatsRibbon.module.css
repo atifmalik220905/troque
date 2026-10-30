@@ -1,0 +1,86 @@
+.ribbonSection {
+  background-color: #ffffff;
+  padding: 44px 0;
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.ribbonGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  align-items: center;
+}
+
+.ribbonItem {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 0 16px;
+  border-right: 1px solid var(--border-light);
+}
+
+.ribbonItem:last-child {
+  border-right: none;
+}
+
+.iconCircle {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background-color: var(--brand-red);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 6px 16px rgba(196, 51, 59, 0.28);
+  transition: transform var(--transition-normal);
+}
+
+.ribbonItem:hover .iconCircle {
+  transform: scale(1.08);
+}
+
+.ribbonText {
+  display: flex;
+  flex-direction: column;
+}
+
+.ribbonCount {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 900;
+  color: #111827;
+  line-height: 1.1;
+}
+
+.ribbonLabel {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+@media (max-width: 992px) {
+  .ribbonGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 16px;
+  }
+  .ribbonItem:nth-child(2) {
+    border-right: none;
+  }
+}
+
+@media (max-width: 550px) {
+  .ribbonGrid {
+    grid-template-columns: 1fr;
+  }
+  .ribbonItem {
+    border-right: none;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 20px;
+  }
+  .ribbonItem:last-child {
+    border-bottom: none;
+  }
+}

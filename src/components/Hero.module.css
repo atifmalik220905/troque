@@ -1,0 +1,116 @@
+.heroWrapper {
+  position: relative;
+  background: linear-gradient(90deg, rgba(16, 27, 43, 0.94) 0%, rgba(19, 34, 56, 0.82) 50%, rgba(20, 36, 60, 0.5) 100%),
+              url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+  min-height: 580px;
+  display: flex;
+  align-items: center;
+  padding: 95px 0 85px 0;
+  transition: background-image 0.6s ease;
+}
+
+.heroInner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.sliderControls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.65);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  padding: 0;
+}
+
+.dot.active {
+  width: 13px;
+  height: 13px;
+  background-color: var(--brand-green);
+  border-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(142, 169, 59, 0.45);
+}
+
+.heroContent {
+  max-width: 740px;
+}
+
+.slideFade {
+  animation: fadeIn 0.45s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.3;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.heroTitle {
+  font-size: clamp(2.6rem, 4.6vw, 4.1rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+  margin-bottom: 22px;
+  letter-spacing: -0.02em;
+}
+
+.ellipseWrapper {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.ellipseSvg {
+  position: absolute;
+  top: -12%;
+  left: -8%;
+  width: 116%;
+  height: 128%;
+  pointer-events: none;
+}
+
+.heroSubtitle {
+  font-size: 1.12rem;
+  color: #e2e8f0;
+  line-height: 1.7;
+  margin-bottom: 38px;
+  max-width: 640px;
+}
+
+.heroButtons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .heroInner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+  .sliderControls {
+    flex-direction: row;
+  }
+  .heroWrapper {
+    padding: 70px 0 60px 0;
+    min-height: auto;
+  }
+}

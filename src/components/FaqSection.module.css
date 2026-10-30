@@ -1,0 +1,210 @@
+.faqSection {
+  padding: 100px 0 0 0;
+  background-color: #ffffff;
+  position: relative;
+}
+
+.faqGrid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 50px;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.advisorImageCol {
+  position: relative;
+  text-align: center;
+}
+
+.advisorImg {
+  max-width: 100%;
+  height: 480px;
+  object-fit: contain;
+}
+
+.greenBackdropShape {
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+  right: 15%;
+  height: 360px;
+  background-color: var(--brand-green);
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  z-index: 0;
+}
+
+.accordionList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.accordionItem {
+  background-color: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 9999px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.accordionItem.open {
+  border-radius: 24px;
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.accordionHeader {
+  width: 100%;
+  padding: 16px 24px;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.greenCircleArrow {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: var(--brand-green);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.questionText {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--brand-red);
+}
+
+.chevron {
+  color: #64748b;
+  transition: transform 0.2s ease;
+}
+
+.accordionItem.open .chevron {
+  transform: rotate(180deg);
+}
+
+.accordionBody {
+  padding: 0 24px 20px 74px;
+  font-size: 0.95rem;
+  color: #4b5563;
+  line-height: 1.65;
+}
+
+/* Original Blue Callout Banner */
+.blueCtaBanner {
+  background: linear-gradient(90deg, #0e386e 0%, #154c8e 100%);
+  padding: 60px 0;
+  color: #ffffff;
+  position: relative;
+}
+
+.ctaInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+
+.ctaLeft {
+  max-width: 620px;
+}
+
+.ctaHeading {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 800;
+  color: #ffffff;
+  border-left: 5px solid var(--brand-green);
+  padding-left: 20px;
+  margin-bottom: 20px;
+  line-height: 1.25;
+}
+
+.ctaCheckmarks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 24px;
+}
+
+.checkItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+}
+
+.callRedPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  background-color: var(--brand-red);
+  padding: 10px 32px 10px 12px;
+  border-radius: 9999px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.callRedPill:hover {
+  background-color: var(--brand-red-dark);
+  transform: translateY(-2px);
+}
+
+.phoneCircle {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background-color: var(--brand-green);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.callPillText {
+  display: flex;
+  flex-direction: column;
+}
+
+.pillLabel {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.pillNumber {
+  font-size: 1.35rem;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+}
+
+@media (max-width: 992px) {
+  .faqGrid {
+    grid-template-columns: 1fr;
+  }
+  .advisorImageCol {
+    display: none;
+  }
+}
