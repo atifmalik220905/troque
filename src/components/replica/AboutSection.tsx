@@ -11,7 +11,7 @@ export default function AboutSection() {
             <div className="about-four__image">
               <div className="about-four__image__inner">
                 <div className="about-four__image__one">
-                  <img src="/assets/images/about/about-4-1.jpg" alt="about" />
+                  <img src="/assets/images/about/about-4-1.jpg" alt="about" loading="lazy" decoding="async" />
                   <div className="about-four__experience">
                     <div className="about-four__experience__inner">
                       <h3 className="about-four__experience__title">5+ Years Experience</h3>
@@ -19,13 +19,15 @@ export default function AboutSection() {
                   </div>
                 </div>
                 <div className="about-four__image__two">
-                  <img src="/assets/images/about/about-4-2.jpg" alt="about" />
+                  <img src="/assets/images/about/about-4-2.jpg" alt="about" loading="lazy" decoding="async" />
                 </div>
               </div>
               <img
                 src="/assets/images/shapes/about-shape-4-2.png"
                 alt="shape"
                 className="about-four__image__shape"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>

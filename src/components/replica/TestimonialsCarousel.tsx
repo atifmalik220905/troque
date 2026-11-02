@@ -82,6 +82,8 @@ export default function TestimonialsCarousel() {
                   <img
                     src={`/img/testimonials_image/150x160${item.image}`}
                     alt={item.title}
+                    loading="lazy"
+                    decoding="async"
                   />
                   <span className="testimonial-card-two__image__quote">
                     <i className="icon-quote"></i>
@@ -157,11 +159,15 @@ export default function TestimonialsCarousel() {
         src="/assets/images/shapes/testimonials-shape-3-1.png"
         alt=""
         className="testimonials-three__shape-one"
+        loading="lazy"
+        decoding="async"
       />
       <img
         src="/assets/images/shapes/testimonials-shape-3-2.png"
         alt=""
         className="testimonials-three__shape-two"
+        loading="lazy"
+        decoding="async"
       />
     </div>
   );

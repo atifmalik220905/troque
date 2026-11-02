@@ -130,7 +130,12 @@ export default function NewsBlogs() {
             >
               <div className="insurance-card">
                 <div className="insurance-card__image">
-                  <img src={`/assets/images/materials/${c.img}`} alt={c.title} />
+                  <img
+                    src={`/assets/images/materials/${c.img}`}
+                    alt={c.title}
+                    loading="lazy"
+                    decoding="async"
+                  />
                   <div className="insurance-card__icon-box">
                     <span className="insurance-card__icon">
                       <i className={c.icon}></i>

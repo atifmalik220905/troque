@@ -29,7 +29,13 @@ export default function FaqSection() {
       <div className="container">
         <div className="faq-two__image">
           <div className="faq-two__image__inner">
-            <img src="/assets/images/resources/faq-2-1.png" alt="faq" className="faq-two__image__img" />
+            <img
+              src="/assets/images/resources/faq-2-1.png"
+              alt="faq"
+              className="faq-two__image__img"
+              loading="lazy"
+              decoding="async"
+            />
             <div className="faq-two__image__shape"></div>
           </div>
           <span className="faq-two__image__question">

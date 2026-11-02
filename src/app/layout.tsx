@@ -11,6 +11,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://torqueautoadvisor.com"),
+  alternates: {
+    canonical: "/",
+  },
   title: "Welcome to Torque Auto Advisor",
   description:
     "At Torque Auto Advisor, we understand the intricacies of vehicle management and insurance, and we are dedicated to providing you with a seamless and hassle-free experience. Our expert team is committed to ensuring that your vehicle remains roadworthy, insured, and legally compliant at all times.",
@@ -43,6 +47,13 @@ export const metadata: Metadata = {
         alt: "Torque Auto Advisor"
       }
     ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Torque Auto Advisor | Vehicle Services & Insurance in Morbi",
+    description:
+      "Your trusted partner for vehicle management, insurance, driving licenses, and RTO advisory in Morbi, Gujarat.",
+    images: ["https://torqueautoadvisor.com/img/meta_logo.jpg"],
   },
   icons: {
     icon: [

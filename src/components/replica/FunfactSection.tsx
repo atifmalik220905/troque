@@ -33,6 +33,8 @@ export default function FunfactSection() {
                       src="/assets/images/shapes/funfact-shape-1.png"
                       alt="shape"
                       className="funfact__item__shape"
+                      loading="lazy"
+                      decoding="async"
                     />
                   )}
                 </div>

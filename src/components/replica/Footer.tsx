@@ -180,6 +180,7 @@ export default function Footer() {
       <a
         href="#"
         onClick={scrollToTop}
+        aria-label="Scroll to top"
         className={`scroll-to-target scroll-to-top ${showScrollTop ? "show" : ""}`}
         style={showScrollTop ? { display: "inline-block", opacity: 1, visibility: "visible" } : { display: "none" }}
       >
