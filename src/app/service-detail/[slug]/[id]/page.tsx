@@ -25,7 +25,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!service) return { title: "Service Not Found || Torque Auto Advisor" };
   return {
     title: `${service.title} - Our Services || Torque Auto Advisor`,
-    description: service.shortDesc
+    description: service.shortDesc,
+    alternates: {
+      canonical: `/service-detail/${service.slug}/${service.id}`,
+    },
+    openGraph: {
+      title: `${service.title} - Our Services || Torque Auto Advisor`,
+      description: service.shortDesc,
+      url: `/service-detail/${service.slug}/${service.id}`,
+      type: "article",
+      images: [
+        {
+          url: `/img/service_image/750x750${service.image}`,
+          alt: service.title,
+        },
+      ],
+    },
   };
 }
 

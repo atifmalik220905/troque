@@ -6,7 +6,17 @@ import Marquee from "@/components/replica/Marquee";
 export const metadata: Metadata = {
   title: "About Us || Torque Auto Advisor",
   description:
-    "Learn more about Torque Auto Advisor, your trusted partner in comprehensive vehicle services, RTO compliance, and insurance in Morbi, Gujarat."
+    "Learn more about Torque Auto Advisor, your trusted partner in comprehensive vehicle services, RTO compliance, and insurance in Morbi, Gujarat.",
+  alternates: {
+    canonical: "/about-us",
+  },
+  openGraph: {
+    title: "About Us || Torque Auto Advisor",
+    description:
+      "Learn more about Torque Auto Advisor, your trusted partner in comprehensive vehicle services, RTO compliance, and insurance in Morbi, Gujarat.",
+    url: "/about-us",
+    type: "website",
+  },
 };
 
 export default function AboutUsPage() {
@@ -31,11 +41,15 @@ export default function AboutUsPage() {
                   src="/assets/images/about/about-5-1.jpg"
                   alt="about"
                   className="about-one__image__inner"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <img
                   src="/assets/images/shapes/about-shape-5-1.png"
                   alt="shape"
                   className="about-one__image__shape"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -79,6 +93,8 @@ export default function AboutUsPage() {
           src="/assets/images/shapes/about-shape-5-2.png"
           alt="shape"
           className="about-one__shape"
+          loading="lazy"
+          decoding="async"
         />
       </section>
 
@@ -108,6 +124,8 @@ export default function AboutUsPage() {
                         src="/assets/images/shapes/funfact-shape-1.png"
                         alt="shape"
                         className="funfact__item__shape"
+                        loading="lazy"
+                        decoding="async"
                       />
                     )}
                   </div>
@@ -179,6 +197,8 @@ export default function AboutUsPage() {
                       <img
                         src="/assets/images/why-choose/why-choose-1-1.jpg"
                         alt="choose image"
+                        loading="lazy"
+                        decoding="async"
                       />
                       <span className="why-choose-one__image__star-text">*</span>
                       <div className="why-choose-one__image__shape"></div>

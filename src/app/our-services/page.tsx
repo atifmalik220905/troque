@@ -7,7 +7,17 @@ import { ORIGINAL_SERVICES } from "@/data/originalData";
 export const metadata: Metadata = {
   title: "Our Services || Torque Auto Advisor",
   description:
-    "Comprehensive vehicle and RTO services in Morbi, Gujarat: Vehicle Insurance, Passing, Fitness Certificate, Permit, P.U.C., Vehicle Name Transfer, HSRP RTO Number Plate, CNG Cylinder Re-Testing, Driving License."
+    "Comprehensive vehicle and RTO services in Morbi, Gujarat: Vehicle Insurance, Passing, Fitness Certificate, Permit, P.U.C., Vehicle Name Transfer, HSRP RTO Number Plate, CNG Cylinder Re-Testing, Driving License.",
+  alternates: {
+    canonical: "/our-services",
+  },
+  openGraph: {
+    title: "Our Services || Torque Auto Advisor",
+    description:
+      "Comprehensive vehicle and RTO services in Morbi, Gujarat: Vehicle Insurance, Passing, Fitness Certificate, Permit, P.U.C., Vehicle Name Transfer, HSRP RTO Number Plate, CNG Cylinder Re-Testing, Driving License.",
+    url: "/our-services",
+    type: "website",
+  },
 };
 
 export default function ServicesPage() {

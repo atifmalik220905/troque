@@ -95,6 +95,8 @@ export default function PhotoGalleryPage() {
                       <img
                         src={`/img/gallery_image/500x300${item.image}`}
                         alt={item.title}
+                        loading="lazy"
+                        decoding="async"
                         style={{
                           width: "100%",
                           height: "260px",
