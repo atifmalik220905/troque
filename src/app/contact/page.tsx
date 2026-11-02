@@ -95,6 +95,9 @@ Message: ${formData.message || "Please call back for consultation."}`;
                                     <input
                                       type="text"
                                       name="e_name"
+                                      autoComplete="name"
+                                      aria-label="Your Name"
+                                      aria-required="true"
                                       required
                                       placeholder="ex: John Doe"
                                       value={formData.name}
@@ -105,6 +108,10 @@ Message: ${formData.message || "Please call back for consultation."}`;
                                     <input
                                       type="tel"
                                       name="e_phone"
+                                      inputMode="tel"
+                                      autoComplete="tel"
+                                      aria-label="Phone Number"
+                                      aria-required="true"
                                       pattern="\d*"
                                       minLength={10}
                                       maxLength={10}
@@ -118,6 +125,10 @@ Message: ${formData.message || "Please call back for consultation."}`;
                                     <input
                                       type="email"
                                       name="e_email"
+                                      inputMode="email"
+                                      autoComplete="email"
+                                      aria-label="Email Address"
+                                      aria-required="true"
                                       required
                                       placeholder="ex: john@mail.com"
                                       value={formData.email}
@@ -128,6 +139,8 @@ Message: ${formData.message || "Please call back for consultation."}`;
                                     <input
                                       type="text"
                                       name="e_subject"
+                                      autoComplete="off"
+                                      aria-label="Subject of Inquiry"
                                       placeholder="ex: Meet for insurance"
                                       value={formData.subject}
                                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
@@ -139,6 +152,7 @@ Message: ${formData.message || "Please call back for consultation."}`;
                                       className="textareaText"
                                       cols={5}
                                       rows={3}
+                                      aria-label="Message Details"
                                       placeholder="ex: Best insurance for vehicle"
                                       value={formData.message}
                                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}

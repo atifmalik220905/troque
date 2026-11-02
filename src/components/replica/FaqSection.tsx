@@ -68,7 +68,16 @@ export default function FaqSection() {
                     >
                       <div
                         className="accordion-title"
+                        role="button"
+                        tabIndex={0}
+                        aria-expanded={isOpen}
                         onClick={() => setOpenIndex(isOpen ? null : idx)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            setOpenIndex(isOpen ? null : idx);
+                          }
+                        }}
                         style={{ cursor: "pointer" }}
                       >
                         <span className="accordion-title__icon">

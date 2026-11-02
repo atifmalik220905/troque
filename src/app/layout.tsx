@@ -64,6 +64,44 @@ export const metadata: Metadata = {
   }
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  name: "Torque Auto Advisor",
+  image: "https://torqueautoadvisor.com/img/meta_logo.jpg",
+  "@id": "https://torqueautoadvisor.com",
+  url: "https://torqueautoadvisor.com",
+  telephone: "+91 8000 811 331",
+  priceRange: "₹₹",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "2nd Floor, Zeel Complex Behind Old Bus Stand, Ayodhyapuri, Main Road",
+    addressLocality: "Morbi",
+    addressRegion: "Gujarat",
+    postalCode: "363641",
+    addressCountry: "IN"
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 22.8181353,
+    longitude: 70.8286667
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "09:00",
+      closes: "20:00"
+    }
+  ],
+  sameAs: [
+    "https://facebook.com/",
+    "https://instagram.com/",
+    "https://twitter.com/",
+    "https://pinterest.com/"
+  ]
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -100,6 +138,12 @@ export default function RootLayout({
         <link rel="stylesheet" href="/assets/vendors/owl-carousel/css/owl.carousel.min.css" />
         <link rel="stylesheet" href="/assets/vendors/owl-carousel/css/owl.theme.default.min.css" />
         <link rel="stylesheet" href="/assets/css/insuba.css" />
+
+        {/* Structured Data (Schema.org JSON-LD) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body>
         <div className="page-wrapper">

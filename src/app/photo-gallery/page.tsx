@@ -1,12 +1,24 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PageHeader from "@/components/replica/PageHeader";
 import { ORIGINAL_ALBUMS, ORIGINAL_GALLERY, GalleryData } from "@/data/originalData";
 
 export default function PhotoGalleryPage() {
   const [activeAlbumId, setActiveAlbumId] = useState(1);
   const [lightboxImg, setLightboxImg] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setLightboxImg(null);
+      }
+    };
+    if (lightboxImg) {
+      window.addEventListener("keydown", handleKeyDown);
+    }
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxImg]);
 
   const filteredGallery = ORIGINAL_GALLERY.filter((item) => item.albumId === activeAlbumId);
 
@@ -20,6 +32,8 @@ export default function PhotoGalleryPage() {
             {/* Album Tabs */}
             <ul
               className="tab-buttons gallery-tab-buttons"
+              role="tablist"
+              aria-label="Gallery album categories"
               style={{
                 display: "flex",
                 justifyContent: "center",
@@ -34,7 +48,16 @@ export default function PhotoGalleryPage() {
                 return (
                   <li
                     key={album.id}
+                    role="tab"
+                    aria-selected={isActive}
+                    tabIndex={0}
                     onClick={() => setActiveAlbumId(album.id)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setActiveAlbumId(album.id);
+                      }
+                    }}
                     className={`tab-btn insuba-btn ${isActive ? "active-btn" : ""}`}
                     style={{
                       cursor: "pointer",
@@ -92,6 +115,9 @@ export default function PhotoGalleryPage() {
       {lightboxImg && (
         <div
           className="gallery-modal-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Image Preview Modal"
           onClick={() => setLightboxImg(null)}
         >
           <div

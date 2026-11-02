@@ -128,6 +128,9 @@ export default function Header() {
                 <div
                   className="mobile-nav__btn mobile-nav__toggler"
                   onClick={() => setMobileOpen(true)}
+                  role="button"
+                  aria-label="Open mobile navigation"
+                  tabIndex={0}
                   style={{ cursor: "pointer" }}
                 >
                   <span></span> <span></span> <span></span>
@@ -171,6 +174,9 @@ export default function Header() {
                 <div
                   className="sidebar-btn__toggler sidebar-btn__toggler--nav"
                   onClick={() => setSidebarOpen(true)}
+                  role="button"
+                  aria-label="Open contact information sidebar"
+                  tabIndex={0}
                   style={{ cursor: "pointer" }}
                 >
                   <div className="sidebar-btn__toggler__bar">
@@ -187,7 +193,14 @@ export default function Header() {
       <div className={`mobile-nav__wrapper ${mobileOpen ? "expanded" : ""}`}>
         <div className="mobile-nav__overlay" onClick={closeAll}></div>
         <div className="mobile-nav__content">
-          <span className="mobile-nav__close" onClick={closeAll} style={{ cursor: "pointer" }}>
+          <span
+            className="mobile-nav__close"
+            onClick={closeAll}
+            role="button"
+            aria-label="Close mobile navigation"
+            tabIndex={0}
+            style={{ cursor: "pointer" }}
+          >
             <i className="fas fa-times"></i>
           </span>
           <div className="logo-box logo-retina">
@@ -278,22 +291,22 @@ export default function Header() {
             </li>
           </ul>
           <div className="mobile-nav__social social-links">
-            <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
               <span className="social-links__icon">
                 <i className="fab fa-facebook-f" aria-hidden="true"></i>
               </span>
             </a>
-            <a href="https://pinterest.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://pinterest.com/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
               <span className="social-links__icon">
                 <i className="fab fa-pinterest-p" aria-hidden="true"></i>
               </span>
             </a>
-            <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
               <span className="social-links__icon">
                 <i className="fab fa-twitter" aria-hidden="true"></i>
               </span>
             </a>
-            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <span className="social-links__icon">
                 <i className="fab fa-instagram" aria-hidden="true"></i>
               </span>
@@ -306,7 +319,14 @@ export default function Header() {
       <aside className={`sidebar-one ${sidebarOpen ? "active" : ""}`}>
         <div className="sidebar-one__overlay" onClick={closeAll}></div>
         <div className="sidebar-one__content">
-          <span className="sidebar-one__close" onClick={closeAll} style={{ cursor: "pointer" }}>
+          <span
+            className="sidebar-one__close"
+            onClick={closeAll}
+            role="button"
+            aria-label="Close contact sidebar"
+            tabIndex={0}
+            style={{ cursor: "pointer" }}
+          >
             <i className="fas fa-times"></i>
           </span>
           <div className="sidebar-one__logo sidebar-one__item logo-retina">
@@ -354,22 +374,22 @@ export default function Header() {
             </ul>
           </div>
           <div className="sidebar-one__social social-links sidebar-one__item">
-            <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
               <span className="social-links__icon">
                 <i className="fab fa-facebook-f" aria-hidden="true"></i>
               </span>
             </a>
-            <a href="https://pinterest.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://pinterest.com/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
               <span className="social-links__icon">
                 <i className="fab fa-pinterest-p" aria-hidden="true"></i>
               </span>
             </a>
-            <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
               <span className="social-links__icon">
                 <i className="fab fa-twitter" aria-hidden="true"></i>
               </span>
             </a>
-            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">
+            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <span className="social-links__icon">
                 <i className="fab fa-instagram" aria-hidden="true"></i>
               </span>
