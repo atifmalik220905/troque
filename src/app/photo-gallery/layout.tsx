@@ -23,3 +23,4 @@ export default function PhotoGalleryLayout({
 }) {
   return <>{children}</>;
 }
+
