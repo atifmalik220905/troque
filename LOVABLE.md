@@ -85,3 +85,4 @@ All development milestones are tagged on Git so you can view or edit any version
 - **`v1.0.0-initial-replica`**: 1:1 original PHP port to Next.js 16.
 - **`v1.1.0-mobile-optimized`**: Mobile action bar, touch-swipe carousels, responsive layout fixes.
 - **`v1.2.0-production-optimized`**: HTTP caching, Schema.org structured data, ARIA a11y, OpenGraph metadata, Lovable configuration.
+
