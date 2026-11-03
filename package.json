@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "package:lovable": "powershell -ExecutionPolicy Bypass -File ./scripts/package-lovable.ps1"
   },
   "dependencies": {
     "lucide-react": "^1.63.0",

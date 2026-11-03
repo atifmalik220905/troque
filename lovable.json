@@ -1,0 +1,32 @@
+{
+  "name": "Torque Auto Advisor",
+  "description": "Next.js 16 (React 19) web application for Torque Auto Advisor with responsive mobile action bar, touch carousels, and complete vehicle services catalog.",
+  "version": "1.2.0",
+  "framework": "nextjs",
+  "router": "app-router",
+  "entrypoint": "src/app/page.tsx",
+  "dataSource": "src/data/originalData.ts",
+  "features": [
+    "Homepage with Hero Slider, About, Services Carousel, Why Choose Us, Funfacts, FAQ, Testimonials, News/Blogs",
+    "About Us page with experience timeline, statistics, and company values",
+    "Our Services catalog displaying all 9 RTO & vehicle services",
+    "Dynamic Service Detail pages with custom descriptions and key points",
+    "Photo Gallery with category tabs and full-screen lightbox preview",
+    "Contact Us page with interactive inquiry form linked to WhatsApp & phone",
+    "Mobile Bottom Action Bar for instant Call, WhatsApp, Services, and Google Maps Directions"
+  ],
+  "routes": [
+    { "path": "/", "file": "src/app/page.tsx", "title": "Home" },
+    { "path": "/about-us", "file": "src/app/about-us/page.tsx", "title": "About Us" },
+    { "path": "/our-services", "file": "src/app/our-services/page.tsx", "title": "Our Services" },
+    { "path": "/service-detail/[slug]/[id]", "file": "src/app/service-detail/[slug]/[id]/page.tsx", "title": "Service Detail" },
+    { "path": "/photo-gallery", "file": "src/app/photo-gallery/page.tsx", "title": "Photo Gallery" },
+    { "path": "/contact", "file": "src/app/contact/page.tsx", "title": "Contact Us" }
+  ],
+  "dataFiles": {
+    "services": "src/data/originalData.ts -> ORIGINAL_SERVICES",
+    "sliders": "src/data/originalData.ts -> ORIGINAL_SLIDERS",
+    "testimonials": "src/data/originalData.ts -> ORIGINAL_TESTIMONIALS",
+    "gallery": "src/data/originalData.ts -> ORIGINAL_ALBUMS & ORIGINAL_GALLERY"
+  }
+}
